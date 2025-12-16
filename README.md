@@ -1,10 +1,10 @@
-# Biotech Lead Qualification Engine 🧬
+# Biotech Lead Qualification Engine
 
-A smart lead generation and scoring tool designed for Business Development teams selling **3D In-Vitro Therapy Models**.
+A smart lead generation and scoring tool designed for Business Development teams selling 3D In-Vitro Therapy Models.
 
-This application simulates an AI agent that crawls finding key buyer personas (e.g., Directors of Toxicology), enriches their profiles with high-value signals (Fundraising, Recent Publications), and ranks them by their **Propensity to Buy**.
+This application simulates an AI agent that crawls finding key buyer personas (e.g., Directors of Toxicology), enriches their profiles with high-value signals (Fundraising, Recent Publications), and ranks them by their Propensity to Buy.
 
-## 🚀 Key Features
+## Key Features
 
 *   **Smart Scoring Engine**: Ranks leads from 0-100 based on weighted signals:
     *   **Role Fit (+30)**: Prioritizes decision-makers (Directors, VPs).
@@ -12,18 +12,18 @@ This application simulates an AI agent that crawls finding key buyer personas (e
     *   **Funding Power (+20)**: Highlights companies with recent Series A/B funding.
     *   **Technographics (+15)**: Identifies teams already using in-vitro models.
     *   **Ecosystem (+10)**: Targets key biotech hubs (Boston, Basel, SF).
-*   **Location Intelligence**: Distinguishes between **Person Location** (Remote) and **Company HQ** (Hubs).
-*   **Search & Filters**: Instantly filter by Ontology, specific locations (e.g., Boston), or specific companies (e.g., Pfizer).
+*   **Location Intelligence**: Distinguishes between Person Location (Remote) and Company HQ (Hubs).
+*   **Search & Filters**: Instantly filter by Oncology, specific locations (e.g., Boston), or specific companies (e.g., Pfizer).
 *   **Data Export**: One-click download of your qualified lead list to CSV.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 *   **Python 3**
 *   **Streamlit** (Frontend/Dashboard)
 *   **Pandas** (Data Processing)
 *   **Faker** (Synthetic Data Generation)
 
-## 📦 Installation
+## Installation
 
 1.  Clone the repository:
     ```bash
@@ -42,7 +42,7 @@ This application simulates an AI agent that crawls finding key buyer personas (e
     pip install -r requirements.txt
     ```
 
-## 🖥️ Usage
+## Usage
 
 Run the dashboard locally:
 
@@ -56,7 +56,7 @@ streamlit run app.py
 4.  **Analyze**: Sort the table by Rank or Probability.
 5.  **Export**: Download the list for outreach.
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 ├── app.py                 # Main Streamlit Dashboard application
@@ -67,7 +67,7 @@ streamlit run app.py
 └── README.md              # Documentation
 ```
 
-## 🧠 The Logic Behind the Score
+## The Logic Behind the Score
 
 The "Propensity to Buy" model transforms raw data into actionable intelligence:
 

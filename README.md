@@ -4,6 +4,8 @@ A smart lead generation and scoring tool designed for Business Development teams
 
 This application simulates an AI agent that crawls finding key buyer personas (e.g., Directors of Toxicology), enriches their profiles with high-value signals (Fundraising, Recent Publications), and ranks them by their Propensity to Buy.
 
+![Biotech Lead Finder Dashboard](streamlit%20dashboard%20lead%20engine.png)
+
 ## Key Features
 
 *   **Smart Scoring Engine**: Ranks leads from 0-100 based on weighted signals:

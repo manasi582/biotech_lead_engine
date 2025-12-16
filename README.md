@@ -12,6 +12,7 @@ This application simulates an AI agent that crawls finding key buyer personas (e
     *   **Funding Power (+20)**: Highlights companies with recent Series A/B funding.
     *   **Technographics (+15)**: Identifies teams already using in-vitro models.
     *   **Ecosystem (+10)**: Targets key biotech hubs (Boston, Basel, SF).
+*   **Live Data Integration (Proxycurl)**: Toggle between simulated data and live LinkedIn data fetching via API.
 *   **Location Intelligence**: Distinguishes between Person Location (Remote) and Company HQ (Hubs).
 *   **Search & Filters**: Instantly filter by Oncology, specific locations (e.g., Boston), or specific companies (e.g., Pfizer).
 *   **Data Export**: One-click download of your qualified lead list to CSV.

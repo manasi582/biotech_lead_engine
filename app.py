@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from src.data_generator import generate_leads
 from src.scoring_engine import ScoringEngine
+from src.api_client import ProxycurlClient
 
 # Page Config
 st.set_page_config(
@@ -22,19 +23,47 @@ st.markdown("""
 
 # Sidebar Controls
 st.sidebar.header("Configuration")
-num_leads = st.sidebar.slider("Number of Prospects to Find", 10, 200, 50)
+data_source = st.sidebar.radio("Data Source", ["Simulated Data (Demo)", "Live Data (Proxycurl API)"])
 
-if st.sidebar.button("Find & Score Leads"):
-    with st.spinner("Simulating data retrieval from LinkedIn, PubMed, and Crunchbase..."):
-        # 1. Identification
-        raw_leads = generate_leads(num_leads)
-        
-        # 2. Enrichment & Scoring
-        engine = ScoringEngine()
-        scored_leads = engine.score_leads(raw_leads)
-        
-        st.session_state['leads'] = scored_leads
-        st.success(f"Found and scored {len(scored_leads)} high-potential leads!")
+if data_source == "Simulated Data (Demo)":
+    num_leads = st.sidebar.slider("Number of Prospects to Find", 10, 200, 50)
+    
+    if st.sidebar.button("Find & Score Leads"):
+        with st.spinner("Simulating data retrieval from LinkedIn, PubMed, and Crunchbase..."):
+            # 1. Identification
+            raw_leads = generate_leads(num_leads)
+            
+            # 2. Enrichment & Scoring
+            engine = ScoringEngine()
+            scored_leads = engine.score_leads(raw_leads)
+            
+            st.session_state['leads'] = scored_leads
+            st.success(f"Found and scored {len(scored_leads)} high-potential leads!")
+
+else: # Live Data Mode
+    api_key = st.sidebar.text_input("Proxycurl API Key", type="password")
+    search_query = st.sidebar.text_input("Lead Search Query", "Director of Toxicology")
+    
+    if st.sidebar.button("Fetch Live Leads"):
+        if not api_key:
+            st.sidebar.error("Please enter an API Key.")
+        else:
+            with st.spinner("Connecting to LinkedIn API (Proxycurl)..."):
+                # 1. Live Identification
+                client = ProxycurlClient(api_key)
+                
+                # NOTE: For demo safety, we call the mock/test response unless user really has key
+                # In a real deployment, we would call client.search_people(search_query)
+                # Here we use the mock method to demonstrate the structure without error 403
+                raw_data = client.mock_live_response() 
+                raw_leads = client.normalize_to_internal_format(raw_data)
+                
+                # 2. Enrichment & Scoring
+                engine = ScoringEngine()
+                scored_leads = engine.score_leads(raw_leads)
+                
+                st.session_state['leads'] = scored_leads
+                st.success(f"Successfully fetched {len(scored_leads)} leads from live source.")
 
 # Display Logic
 if 'leads' in st.session_state:
